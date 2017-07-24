@@ -1,10 +1,10 @@
 package com.example.android.habittrackerapp.data;
 
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+        import android.content.Context;
+        import android.database.sqlite.SQLiteDatabase;
+        import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.android.habittrackerapp.data.HabitContract.HabitEntry;
+        import com.example.android.habittrackerapp.data.HabitContract.HabitEntry;
 
 /**
  * Created by Polacek on 21.7.2017.
