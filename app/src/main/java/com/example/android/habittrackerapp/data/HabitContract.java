@@ -1,6 +1,6 @@
 package com.example.android.habittrackerapp.data;
 
-import android.provider.BaseColumns;
+        import android.provider.BaseColumns;
 
 /**
  * Created by Polacek on 21.7.2017.
