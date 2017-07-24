@@ -54,26 +54,31 @@ public class MainActivity extends AppCompatActivity {
                 null,
                 null,
                 null
-        );return cursor;}
-
-    private Cursor displayDatabase() {
-        Cursor cursor = getCursor();
+        );
+        return cursor;
+    }
+    public Cursor readDatabaseInfo() {
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+        Cursor cursor = db.Query("SELECT * FROM " + HabitEntry.TABLE_NAME, null);
+        // In the while loop below, iterate through the rows of the cursor and display
+        // the information from each column in this order.
+        // Figure out the index of each column
         int idColumnIndex = cursor.getColumnIndex(HabitEntry._ID);
         int nameColumnIndex = cursor.getColumnIndex(HabitEntry.COLUMN_HABIT_NAME);
         int lengthColumnIndex = cursor.getColumnIndex(HabitEntry.COLUMN_HABIT_LENGTH);
-        if (cursor.moveToFirst()){
-            while(!cursor.isAfterLast()){
-                // at the current row the cursor is on.
-                int currentID = cursor.getInt(idColumnIndex);
-                String currentName = cursor.getString(nameColumnIndex);
-                int currentLenght = cursor.getInt(lengthColumnIndex);
-            }
-
+        // Iterate through all the returned rows in the cursor
+        while (cursor.moveToNext()) {
+            // Use that index to extract the String or Int value of the word
+            // at the current row the cursor is on.
+            int currentID = cursor.getInt(idColumnIndex);
+            String currentName = cursor.getString(nameColumnIndex);
+            int currentLenght = cursor.getInt(lengthColumnIndex);
         }
-        return displayDatabase();
-        cursor.close();}
-
-
+        // Always close the cursor when you're done reading from it. This releases all its
+        // resources and makes it invalid.
+        cursor.close();
+        return cursor;
+    }
 
 
     private void insertHabit() {
